@@ -448,69 +448,6 @@ project_directory/
     └── submission_*.txt                  # Pipeline submission record
 ```
 
-## What's New in This Version
-
-This modernized pipeline replaces the legacy BRB-seq scripts with:
-
-### Major Improvements
-- **Single YAML config** — Replaces 3+ separate parameter files
-- **Automated sample counting** — No manual SLURM array sizing
-- **Sample name validation** — Prevents downstream R errors
-- **Chemistry presets** — Reduces configuration errors
-- **Automated repooling** — Excel generation, no copy-paste
-- **SLURM dependency chaining** — Submit once, runs automatically
-- **Conda environment** — Fully reproducible, no spack
-- **Modern references** — GRCm39, GRCh38, Ensembl 113
-
-### Fixed Bugs
-1. FastQC version check expecting v0.x format
-2. Typo in RSeQC version variable (rsqecVersion → rseqcVersion)
-3. Stray parenthesis in cutadapt grep
-4. Inconsistent spack paths
-5. Incomplete temp file cleanup
-6. Undefined variables in MultiQC script
-
-### What Hasn't Changed
-- Core algorithms (STAR, featureCounts, STARsolo)
-- Output file formats (compatible with legacy downstream analysis)
-- UMI deduplication approach
-- MultiQC report structure
-
-## Citation
-
-**BRB-seq method:**
-```
-Alpern, D., Gardeux, V., Russeil, J., et al. (2019).
-BRB-seq: ultra-affordable high-throughput transcriptomics enabled by 
-bulk RNA barcoding and sequencing. Genome Biology, 20, 71.
-https://doi.org/10.1186/s13059-019-1671-x
-```
-
-**This pipeline:**
-```
-Muegge Lab, Washington University in St. Louis (2026).
-BRB-seq Analysis Pipeline v1.0.0.
-https://github.com/YOUR-ORG/brb-seq-pipeline
-```
-
-## Support & Contributing
-
-- 🐛 **Bug reports:** [Open an issue](../../issues/new?labels=bug)
-- 💡 **Feature requests:** [Open an issue](../../issues/new?labels=enhancement)
-- 💬 **Questions:** [Start a discussion](../../discussions/new?category=q-a)
-- 🤝 **Contributing:** See [CONTRIBUTING.md](CONTRIBUTING.md)
-
-## License
-
-This project is licensed under the MIT License - see [LICENSE](LICENSE) for details.
-
-## Acknowledgments
-
-- Original BRB-seq method: [Deplancke Lab](https://github.com/DeplanckeLab/BRB-seqTools)
-- Pipeline development: Muegge Lab, Washington University in St. Louis
-- Testing and validation: Brian Olszowy
-
----
 
 **Maintained by the Muegge Lab at Washington University in St. Louis**
 
