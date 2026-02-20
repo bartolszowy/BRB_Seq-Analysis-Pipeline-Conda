@@ -174,7 +174,7 @@ See `environment.yml` for complete list.
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/YOUR-ORG/brb-seq-pipeline.git
+git clone [https://github.com/YOUR-ORG/brb-seq-pipeline.git](https://github.com/bartolszowy/BRB_Seq-Analysis-Pipeline-Conda.git)
 cd brb-seq-pipeline
 ```
 
