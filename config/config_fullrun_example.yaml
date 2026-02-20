@@ -1,0 +1,38 @@
+# =============================================================================
+# JL_008_EPZ Full Run Analysis - New Pipeline Test
+# =============================================================================
+
+project:
+  name: "JL008_EPZ_FullRun_NewPipeline"
+  directory: "/scratch/bmlab/bolszowy/projects/JL_008_EPZ/new_pipeline_test/full_run"
+  run_type: "full_run"
+  species: "mouse"
+
+input:
+  samples_file: "/scratch/bmlab/bolszowy/projects/JL_008_EPZ/new_pipeline_test/samples_fullrun.tsv"
+  read1: "/scratch/bmlab/bolszowy/projects/JL_008_EPZ/data/SR009647/JL008_EPZ_R1.fastq.gz"
+  read2: "/scratch/bmlab/bolszowy/projects/JL_008_EPZ/data/SR009647/JL008_EPZ_R2.fastq.gz"
+
+chemistry:
+  preset: "Alithea"
+
+reference:
+  star_index: ""   # Auto-populated from species
+  gtf: ""          # Auto-populated from species
+  bed: ""
+
+flags:
+  demultiplex: true
+  remove_intermediate: true
+  remove_bam: true
+
+slurm:
+  cpus_per_sample: 4
+  mem_per_sample_mb: 75000
+  max_concurrent_jobs: 20
+  mail: "b.olszowy@wustl.edu"
+  conda_env: "brb_seq"
+
+repooling:
+  target_reads_per_sample: 5000000
+  evenness_threshold: 0.8

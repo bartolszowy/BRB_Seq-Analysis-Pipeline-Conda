@@ -1,0 +1,38 @@
+# =============================================================================
+# JL_008_EPZ Spike-In Analysis - New Pipeline Test
+# =============================================================================
+
+project:
+  name: "JL008_EPZ_SpikeIn_NewPipeline"
+  directory: "/scratch/bmlab/bolszowy/projects/JL_008_EPZ/new_pipeline_test/spike_in"
+  run_type: "spike_in"
+  species: "mouse"
+
+input:
+  samples_file: "/scratch/bmlab/bolszowy/projects/JL_008_EPZ/new_pipeline_test/samples_spikein.tsv"
+  read1: "/scratch/bmlab/bolszowy/projects/JL_008_EPZ/data/SpikeIn/Muegge_JL_008_Bart_EPZ_MQ-UDI-2-N702_MQ-UDI-2-D502_CGTACTAG_ATAGAGGC_S10_R1_001.fastq.gz"
+  read2: "/scratch/bmlab/bolszowy/projects/JL_008_EPZ/data/SpikeIn/Muegge_JL_008_Bart_EPZ_MQ-UDI-2-N702_MQ-UDI-2-D502_CGTACTAG_ATAGAGGC_S10_R2_001.fastq.gz"
+
+chemistry:
+  preset: "Alithea"
+
+reference:
+  star_index: ""   # Auto-populated from species
+  gtf: ""          # Auto-populated from species
+  bed: ""
+
+flags:
+  demultiplex: true
+  remove_intermediate: true
+  remove_bam: true
+
+slurm:
+  cpus_per_sample: 4
+  mem_per_sample_mb: 75000
+  max_concurrent_jobs: 20
+  mail: "b.olszowy@wustl.edu"
+  conda_env: "brb_seq"
+
+repooling:
+  target_reads_per_sample: 5000000
+  evenness_threshold: 0.8

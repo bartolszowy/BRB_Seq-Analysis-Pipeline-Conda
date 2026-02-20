@@ -1,0 +1,43 @@
+# =============================================================================
+# BRB-Seq Pipeline Configuration Template
+# =============================================================================
+
+project:
+  name: "MyProject"                      # Project name (letters, numbers, underscores only)
+  directory: "/path/to/output"           # Where to write results
+  run_type: "spike_in"                   # "spike_in" or "full_run"
+  species: "mouse"                       # "mouse" or "human"
+
+input:
+  samples_file: "samples.tsv"            # Path to 3-column sample mapping file
+  read1: "/path/to/R1.fastq.gz"          # Read 1 (contains barcode + UMI)
+  read2: "/path/to/R2.fastq.gz"          # Read 2 (contains cDNA)
+
+chemistry:
+  preset: "Alithea"                      # "Alithea", "PrimeSeq", "TripBRB", or "custom"
+  # Only needed if preset is "custom":
+  # cb_start:  1                         # Cell barcode start position
+  # cb_len:    14                        # Cell barcode length
+  # umi_start: 15                        # UMI start position
+  # umi_len:   14                        # UMI length
+
+reference:
+  star_index: ""                         # Leave blank to auto-populate from species
+  gtf: ""                                # Leave blank to auto-populate from species
+  bed: ""                                # Leave blank to auto-populate from species
+
+flags:
+  demultiplex: true                      # Demultiplex by RT barcode
+  remove_intermediate: true              # Clean up intermediate files
+  remove_bam: true                       # Remove BAM files after counting
+
+slurm:
+  cpus_per_sample: 4                     # CPUs per sample
+  mem_per_sample_mb: 75000               # Memory per sample (MB)
+  max_concurrent_jobs: 20                # Max samples running at once
+  mail: "your.email@wustl.edu"           # Your email for notifications
+  conda_env: "brb_seq"                   # Conda environment name
+
+repooling:
+  target_reads_per_sample: 5000000       # Target reads for full run (spike-in only)
+  evenness_threshold: 0.8                # Evenness threshold (not currently used)

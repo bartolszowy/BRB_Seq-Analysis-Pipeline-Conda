@@ -1,0 +1,36 @@
+name: brb_seq
+channels:
+  - bioconda
+  - conda-forge
+  - defaults
+
+dependencies:
+  # ── Demultiplexing & trimming ─────────────────────────────────────────────
+  - cutadapt=4.9           # standardized: was 2.10 in most scripts, 3.1 in Demultiplex
+  - pigz=2.8               # parallel gzip, used alongside cutadapt
+
+  # ── QC ───────────────────────────────────────────────────────────────────
+  - fastqc=0.12.1          # standardized: was split between 0.11.9 and 0.12.1 (bug)
+  - multiqc=1.13           # pinned to current version
+  - setuptools
+  - rseqc=5.0.3            # was 2.6.4 via spack; 5.x is current bioconda release
+  - samtools=1.21          # was 1.7 via spack; needed for rseqc BAM indexing
+  - qualimap=2.3           # was 2.2.1 via spack
+
+  # ── Alignment ─────────────────────────────────────────────────────────────
+  - star=2.7.11b           # standardized: was split between 2.7.6a and 2.7.10b
+
+  # ── Feature counting ──────────────────────────────────────────────────────
+  - subread=2.0.6          # featureCounts; was 2.0.2 via spack
+
+  # ── Subsampling (saturation curve) ────────────────────────────────────────
+  - seqtk=1.4              # was 1.3 via spack; used in Subsampling3.sh
+
+  # ── R and packages ────────────────────────────────────────────────────────
+  - r-base=4.4.2           # was 4.1.3 via spack
+  - r-matrix                # used in Mtx_to_Counts.R and singleUMI_singleCount_v3.R
+  - r-data.table            # used in Mtx_to_Counts.R and singleUMI_singleCount_v3.R
+
+  # ── Python utilities ──────────────────────────────────────────────────────
+  - python=3.12
+  - pyyaml                  # for config.yaml parsing in submit_pipeline.sh
