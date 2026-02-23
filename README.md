@@ -28,6 +28,10 @@ This pipeline processes BRB-seq (Bulk RNA Barcoding and sequencing) data from ra
 git clone https://github.com/bartolszowy/BRB_Seq-Analysis-Pipeline-Conda.git
 cd brb-seq-pipeline
 
+# 1.5 Download Conda onto HTCF if this is your first time using Conda
+srun --pty -c 2 --mem=8G -t 01:00:00 bash
+eval `spack load --sh miniconda3`
+
 # 2. Create conda environment
 conda env create -f environment.yml
 conda activate brb_seq
@@ -171,13 +175,27 @@ See `environment.yml` for complete list.
 
 ## Installation
 
+### 0.5 Log into HTCF
+
+```bash
+ssh YOUR_USERNAME@login.htcf.wustl.edu
+```
+then enter password
+
 ### 1. Clone Repository
 
 ```bash
-git clone [https://github.com/YOUR-ORG/brb-seq-pipeline.git](https://github.com/bartolszowy/BRB_Seq-Analysis-Pipeline-Conda.git)
+git clone https://github.com/bartolszowy/BRB_Seq-Analysis-Pipeline-Conda.git
 cd brb-seq-pipeline
 ```
 
+### 1.5 Download and Install Conda onto your HTCF account
+
+**This is for one-time setup per HCTF account**
+```bash
+srun --pty -c 2 --mem=8G -t 01:00:00 bash
+eval `spack load --sh miniconda3`
+```
 ### 2. Create Conda Environment
 
 ```bash
@@ -190,11 +208,6 @@ cutadapt --version  # Should show 4.9
 python --version  # Should show 3.12.x
 ```
 
-**Tip:** Use mamba for faster installation:
-```bash
-conda install -c conda-forge mamba
-mamba env create -f environment.yml
-```
 
 ### 3. Build Genome Indices
 
