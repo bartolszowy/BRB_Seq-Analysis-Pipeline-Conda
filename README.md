@@ -37,8 +37,7 @@ conda env create -f environment.yml
 conda activate brb_seq
 
 # 3. Copy and configure templates
-cp config/config_spikein_example.yaml myproject_config.yaml
-nano myproject_config.yaml  # Edit with your paths
+cp config/config_spikein_example.yaml myproject_config.yaml # Edit with your paths
 
 # 4. Run pipeline
 bash scripts/submit_pipeline.sh myproject_config.yaml
