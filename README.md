@@ -25,7 +25,7 @@ This pipeline processes BRB-seq (Bulk RNA Barcoding and sequencing) data from ra
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/YOUR-ORG/brb-seq-pipeline.git
+git clone [https://github.com/YOUR-ORG/brb-seq-pipeline.git](https://github.com/bartolszowy/BRB_Seq-Analysis-Pipeline-Conda.git)
 cd brb-seq-pipeline
 
 # 2. Create conda environment
